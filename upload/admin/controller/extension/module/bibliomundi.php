@@ -705,8 +705,9 @@ class Controllerextensionmodulebibliomundi extends Controller {
                  */
                 //For Update routine as we may only have one Image as Product Cover
                 $imgUrl = $bbmProduct->getUrlFile();
-                $fileName = basename($imgUrl);
-                @copy($imgUrl, DIR_IMAGE . 'catalog/' . $fileName);
+                // $fileName = basename($imgUrl);
+                $fileName = $bbmProduct->getId().'.'.pathinfo($imgUrl, PATHINFO_EXTENSION);
+                @copy('http://' . $imgUrl, DIR_IMAGE . 'catalog/' . $fileName);
                 $data['image'] = 'catalog/' . $fileName;
             
                 $data['product_category'] = $categoriesIds;
