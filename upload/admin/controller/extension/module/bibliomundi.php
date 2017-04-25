@@ -522,14 +522,14 @@ class Controllerextensionmodulebibliomundi extends Controller {
                                     'status' => 1,
                                     'category_description' => array(
                                         (int)$this->config->get('config_language_id') => array(
-                                            'name' => $bbmCategory->getCode(),
+                                            'name' => $bbmCategory->getName(),
                                             'description' => '',
-                                            'meta_title' => $bbmCategory->getCode(),
+                                            'meta_title' => $bbmCategory->getName(),
                                             'meta_description' => '',
                                             'meta_keyword' => ''
                                         )
                                     ),
-                                    'keyword' => $bbmCategory->getCode(),
+                                    'keyword' => $bbmCategory->getName(),
                                     'category_store' => array($this->config->get('config_store_id'))
                                 )
                             );
