@@ -484,7 +484,7 @@ class Controllerextensionmodulebibliomundi extends Controller {
                 foreach ($bbmProduct->getPrices() as $price) {                  
                     $bbmPrice[$price->getCurrency()] = $price->getAmount();
                 }
-                if(in_array($this->session->data['currency'], array_keys($bbmPrice))){
+                if(isset($this->session->data['currency']) && in_array($this->session->data['currency'], array_keys($bbmPrice))){
                     $data['price'] = $bbmPrice[$this->session->data['currency']];
                     $this->product_iso_code = $this->session->data['currency'];
                 }else{
@@ -522,14 +522,14 @@ class Controllerextensionmodulebibliomundi extends Controller {
                                     'status' => 1,
                                     'category_description' => array(
                                         (int)$this->config->get('config_language_id') => array(
-                                            'name' => $bbmCategory->getName(),
+                                            'name' => $bbmCategory->getCode(),
                                             'description' => '',
-                                            'meta_title' => $bbmCategory->getName(),
+                                            'meta_title' => $bbmCategory->getCode(),
                                             'meta_description' => '',
                                             'meta_keyword' => ''
                                         )
                                     ),
-                                    'keyword' => $bbmCategory->getName(),
+                                    'keyword' => $bbmCategory->getCode(),
                                     'category_store' => array($this->config->get('config_store_id'))
                                 )
                             );
